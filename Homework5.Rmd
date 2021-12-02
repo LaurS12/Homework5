@@ -9,14 +9,50 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+### Load packages
+```{r}
+library(tidyverse)
+library(readr)
+library(ggplot2)
+library(sf)
+library(tigris)
+```
+
+
 ### Read in data
 ```{r}
-library(readr)
 homicides <- read_csv("data/homicide-data.csv")
 ```
 
 ### View data
 ```{r}
 head(homicides)
+unique(homicides$city)
 ```
+
+
+```{r}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
