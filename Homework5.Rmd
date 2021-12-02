@@ -15,3 +15,8 @@ library(readr)
 homicides <- read_csv("data/homicide-data.csv")
 ```
 
+### View data
+```{r}
+head(homicides)
+```
+
