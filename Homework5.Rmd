@@ -60,8 +60,8 @@ head(washington)
 washington_city <- blocks(state = "DC", class = "sf")
 ggplot() + 
   geom_sf(data = washington_city, color = "lightgray") +
-  geom_sf(data = washington, aes(color = victim_race), size = 1) +
-  scale_color_viridis(name = "# of homicides", discrete = TRUE)
+  geom_sf(data = washington, aes(color = victim_race %>% fct_lump_n(3)), size = 1) +
+  scale_color_viridis(name = "# of homicides", discrete = TRUE, direction = -1, option = "A")
 ```
 
 
