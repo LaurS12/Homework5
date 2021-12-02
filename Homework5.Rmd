@@ -39,7 +39,11 @@ washington$disposition[washington$disposition == "Closed without arrest"] <- "un
 washington$disposition[washington$disposition == "Open/No arrest"] <- "unsolved"
 washington$disposition[washington$disposition == "Closed by arrest"] <- "solved"
 washington <- washington %>%
-  select(uid, victim_race, disposition, lat, lon)
+  select(uid, victim_race, disposition, lat, lon) %>%
+  group_by(uid, victim_race, disposition, lat, lon) %>%
+  count() %>%
+  group_by(lat, lon) %>%
+  mutate(loc_homicides = sum(n))
 head(washington)
 ```
 
@@ -50,6 +54,10 @@ ggplot() +
   geom_sf(data = washington_city)
 ```
 
+
+```{r}
+
+```
 
 
 
