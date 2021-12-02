@@ -16,6 +16,7 @@ library(readr)
 library(ggplot2)
 library(sf)
 library(tigris)
+library(forcats)
 ```
 
 
@@ -30,9 +31,16 @@ head(homicides)
 unique(homicides$city)
 ```
 
-
+### Clean data to use Washington DC
 ```{r}
-
+washington <- homicides %>%
+  filter(city == "Washington")
+washington$disposition[washington$disposition == "Closed without arrest"] <- "unsolved"
+washington$disposition[washington$disposition == "Open/No arrest"] <- "unsolved"
+washington$disposition[washington$disposition == "Closed by arrest"] <- "solved"
+washington <- washington %>%
+  select(uid, victim_race, disposition, lat, lon)
+head(washington)
 ```
 
 
