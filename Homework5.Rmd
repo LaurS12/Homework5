@@ -1,0 +1,17 @@
+---
+title: "Homicide Graph"
+author: "Lauren Smith"
+date: "12/1/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Read in data
+```{r}
+library(readr)
+homicides <- read_csv("data/homicide-data.csv")
+```
+
