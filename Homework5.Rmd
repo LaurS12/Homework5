@@ -62,7 +62,8 @@ ggplot() +
   geom_sf(data = washington_city, color = "gray") +
   geom_sf(data = washington, aes(color = victim_race %>% fct_lump_n(3)), size = 1) +
   scale_color_viridis(name = "race of victim", discrete = TRUE, direction = -1, option = "A") +
-  facet_wrap(.~disposition)
+  facet_wrap(.~disposition) +
+  ggtitle("Homicides in Washington, DC")
 ```
 
 
