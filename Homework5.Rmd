@@ -43,6 +43,12 @@ washington <- washington %>%
 head(washington)
 ```
 
+### sf object
+```{r}
+washington_city <- blocks(state = "DC", class = "sf")
+ggplot() + 
+  geom_sf(data = washington_city)
+```
 
 
 
