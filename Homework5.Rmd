@@ -17,6 +17,7 @@ library(ggplot2)
 library(sf)
 library(tigris)
 library(forcats)
+library(viridis)
 ```
 
 
@@ -42,7 +43,7 @@ washington <- washington %>%
   select(uid, victim_race, disposition, lat, lon) %>%
   group_by(uid, victim_race, disposition, lat, lon) %>%
   count() %>%
-  group_by(lat, lon) %>%
+  group_by(victim_race) %>%
   mutate(loc_homicides = sum(n))
 head(washington)
 ```
@@ -58,14 +59,11 @@ head(washington)
 ```{r}
 washington_city <- blocks(state = "DC", class = "sf")
 ggplot() + 
-  geom_sf(data = washington_city) +
-  geom_sf(data = washington, aes(fill = loc_homicides))
+  geom_sf(data = washington_city, color = "lightgray") +
+  geom_sf(data = washington, aes(fill = loc_homicides)) 
+#  scale_fill_viridis(name = "# of homicides", option = "B", direction = -1)
 ```
 
-
-```{r}
-
-```
 
 
 
